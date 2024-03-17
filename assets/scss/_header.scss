@@ -1,0 +1,77 @@
+// Define color variables
+$primary-color: #0088FF;
+$accent-color: #FF8800;
+$background-color: #FFF;
+$secondary-color: #EBEDF2;
+$dropdown-bg-color: $primary-color;
+$dropdown-item-hover-bg-color: $accent-color;
+$nav-link-disabled-opacity: 0.5;
+
+/*Navbar */
+.navbar-custom {
+    background-color: $background-color !important;
+    color: $secondary-color !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; 
+    border-bottom: 1px solid #EBEDF2;
+}
+
+/* Style the navigation links */
+.navbar-custom .nav-link {
+    color: $primary-color;
+    background-color: $background-color;
+    margin: 0 25px; 
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    
+
+    &:hover,
+    &:focus,
+    &.active {
+        color: $accent-color;
+        background-color: $background-color;
+        border-color: $accent-color;
+    }
+}
+
+.navbar-custom .nav-link.disabled {
+    opacity: $nav-link-disabled-opacity;
+}
+
+/* Style the dropdown */
+.navbar-custom .dropdown-menu {
+    background-color: $dropdown-bg-color;
+    right: 0;
+    left: auto;
+    text-align: center;
+}
+
+.navbar-custom .dropdown-item {
+    color: $secondary-color;
+
+    &:hover {
+        background-color: $dropdown-item-hover-bg-color;
+        color: $secondary-color;
+    }
+}
+
+/* Additional customizations */
+.navbar-custom .navbar-nav {
+    justify-content: center;
+    flex-grow: 0;
+}
+
+.navbar-custom .nav-item.dropdown {
+    position: relative;
+}
+
+.navbar-custom .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+}

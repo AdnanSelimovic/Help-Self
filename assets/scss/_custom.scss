@@ -1,0 +1,224 @@
+// Variables
+$primary-color: #0088FF;
+$accent-color: #FF8800;
+$background-light: #EBEDF2;
+$success-color: #28A745;
+$white-color: #FFF;
+$warning-color: #FFC107;
+$danger-color: #DC3545;
+$gray-color: #6c757d; 
+
+
+// Body
+body {
+    padding-top: 60px; // Adjust for fixed navbar
+}
+
+// Forms
+.form-section {
+    padding: 2rem 0;
+    background: $background-light;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+}
+
+.form-heading, .form-label {
+    color: $primary-color;
+    font-weight: 600;
+}
+
+.form-control {
+    border: 1px solid lighten($primary-color, 10%);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+
+    &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+    }
+}
+
+// Buttons
+.btn {
+    margin: 10px 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    // min-width: 110px;
+    padding: 5px 15px;
+    border: 2px solid transparent; 
+    transition: all 0.3s ease;
+    
+    &-primary {
+      background-color: $primary-color;
+      color: $white-color;
+  
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
+    }
+  
+    &-secondary {
+      background-color: $white-color;
+      color: $primary-color;
+      border-color: $primary-color;
+  
+      &:hover {
+        background-color: darken($white-color, 10%);
+        border-color: darken($primary-color, 10%);
+      }
+    }
+  
+    &-accent {
+      background-color: $accent-color;
+      color: $white-color;
+      border-color: $accent-color;
+  
+      &:hover {
+        background-color: darken($accent-color, 10%);
+        border-color: darken($accent-color, 10%);
+      }
+    }
+
+    &-success {
+        background-color: $success-color; 
+        color: $white-color;
+        border-color: $success-color;
+    
+        &:hover {
+          background-color: darken($success-color, 10%);
+          border-color: darken($success-color, 10%);
+        }
+      }
+
+    &-warning {
+        background-color: $warning-color; 
+        color: $white-color;
+        border-color: $warning-color;
+    
+        &:hover {
+          background-color: darken($warning-color, 10%);
+          border-color: darken($warning-color, 10%);
+        }
+    }
+
+    &-danger {
+        background-color: $danger-color; 
+        color: $white-color;
+        border-color: $danger-color;
+    
+        &:hover {
+          background-color: darken($danger-color, 10%);
+          border-color: darken($danger-color, 10%);
+        }
+    }
+
+    &-action {
+        background-color: $gray-color; 
+        color: $white-color; 
+        border-color: $gray-color;
+    
+        &:hover {
+          background-color: darken($gray-color, 10%); 
+          border-color: darken($gray-color, 10%);
+        }
+      }
+
+      &-action2 {
+        background-color: $white-color;
+        color: $gray-color;
+        border: 2px solid $gray-color;
+
+        &:hover {
+            background-color: lighten($gray-color, 10%);
+            color: $white-color;
+        }
+    }
+  } 
+  
+
+// Hero Section
+.hero-section {
+    background: url('assets/images/favicon.svg') no-repeat center center;
+    background-size: cover;
+    color: $white-color;
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 6rem;
+    margin-top: 4rem;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: $background-light;
+        z-index: -1;
+    }
+}
+
+// Typography
+.display-4 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $primary-color;
+}
+
+.lead {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: $primary-color;
+}
+
+// Dashboard Styles
+.dashboard-title, .graphs-title, .habits-title {
+    color: $accent-color;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+  
+    .card-title {
+        color: $primary-color;
+        text-align: center;
+    }
+  
+    .card-text {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+}
+
+// Progress Bars
+.progress {
+    height: 20px;
+    margin-bottom: 15px;
+}
+
+// Container
+.container {
+    padding-bottom: 4rem; // For visual separation from footer
+}
+
+// Habit Cards
+.habit-card {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+
+
+
+

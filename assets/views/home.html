@@ -1,0 +1,56 @@
+<!-- Dashboard Section -->
+<main class="container mt-5">
+  <h2 class="text-center mb-4" id="dashboardText">Dashboard</h2>
+
+  <!-- Overview and Stats -->
+  <div class="row mb-3">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Habits</h5>
+          <p class="card-text" id="totalHabits">3 Habits</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Average Rating</h5>
+          <p class="card-text" id="averageRating">4.32/5</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Milestones Reached</h5>
+          <p class="card-text" id="milestonesReached">25 Milestones</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GraphsTrends -->
+  <div class="row">
+    <div class="col-12 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Habit Trends</h5>
+          <!-- Canvas for Chart.js -->
+          <div
+            class="chart-container"
+            style="position: relative; height: 60vh; width: 80vw"
+          >
+            <canvas id="habitTrendsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Habits Overview -->
+  <h3 class="mb-3 mt-4">Habits Overview</h3>
+  <div id="habitsOverview" class="row"></div>
+    <!-- Place the habit cards here -->
+  </div>
+</main>

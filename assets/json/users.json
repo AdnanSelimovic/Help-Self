@@ -1,0 +1,83 @@
+[
+  {
+    "username": "user1",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "user1@example.com",
+    "password": "password123",
+    "biography": "Just a person who loves coding, reading, and coffee. Always exploring new technologies and seeking out adventures in the digital world.",
+    "location": "Bosnia and Herzegovina",
+    "habits": [
+      {
+        "id": 1,
+        "title": "Miles Walked",
+        "description": "Walking is a simple way to improve health and mood",
+        "unit": "miles",
+        "verb": "walked",
+        "increment": 25,
+        "milestone": 100,
+        "currentMilestone": 75,
+        "totalProgress": 500,
+        "milestonesReached": 5,
+        "dailyRating": 4,
+        "ratings": [
+          { "value": 2, "date": "28.03.2024" },
+          { "value": 4, "date": "29.03.2024" },
+          { "value": 3, "date": "30.03.2024" },
+          { "value": 4, "date": "31.03.2024" }
+        ],
+        "progressPercentage": 75
+      },
+      {
+        "id": 2,
+        "title": "Books Read",
+        "description": "Reading expands the mind and enriches the soul",
+        "unit": "books",
+        "verb": "read",
+        "increment": 1,
+        "milestone": 1,
+        "currentMilestone": 1,
+        "totalProgress": 20,
+        "milestonesReached": 20,
+        "dailyRating": 5,
+        "ratings": [
+          { "value": 1, "date": "28.03.2024" },
+          { "value": 2, "date": "29.03.2024" },
+          { "value": 5, "date": "30.03.2024" },
+          { "value": 4, "date": "31.03.2024" }
+        ],
+        "progressPercentage": 100
+      }
+    ]
+  },
+  {
+    "username": "user2",
+    "firstName": "Jenna",
+    "lastName": "Smithy",
+    "email": "user2@example.com",
+    "password": "password456",
+    "biography": "Just a person who loves coffee. Always exploring adventures in the digital world.",
+    "location": "Croatia",
+    "habits": [
+      {
+        "id": 1,
+        "title": "Water Intake",
+        "description": "Staying hydrated is essential for overall health",
+        "unit": "litres",
+        "verb": "drank",
+        "increment": 0.5,
+        "milestone": 3,
+        "currentMilestone": 2,
+        "totalProgress": 2,
+        "milestonesReached": 0,
+        "dailyRating": "NaN",
+        "ratings": [
+          { "value": 1, "date": "28.03.2024" },
+          { "value": 2, "date": "29.03.2024" },
+          { "value": 5, "date": "30.03.2024" }
+        ],
+        "progressPercentage": 66
+      }
+    ]
+  }
+]

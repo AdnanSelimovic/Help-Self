@@ -1,0 +1,58 @@
+{
+  "posts": [
+    {
+      "author": "Alex Morgan",
+      "datePosted": "April 2, 2024",
+      "title": "Starting a Morning Routine",
+      "content": "Has anyone here successfully started a morning routine? I'm trying to add meditation and a short workout to my mornings but find it hard to stick to. Any advice?",
+      "views": 5,
+      "likes": 5,
+      "comments": 5
+    },
+    {
+      "author": "Charlie Brown",
+      "datePosted": "April 5, 2024",
+      "title": "Best Books for Personal Development",
+      "content": "I've been on a journey of personal growth and I'm looking for book recommendations. What are some books that have genuinely impacted your life?",
+      "views": 12,
+      "likes": 8,
+      "comments": 3
+    },
+    {
+      "author": "Jane Doe",
+      "datePosted": "April 7, 2024",
+      "title": "How to Stay Motivated?",
+      "content": "Motivation comes and goes. For those of you who've managed to stay consistent, what's your secret?",
+      "views": 15,
+      "likes": 4,
+      "comments": 7
+    },
+    {
+      "author": "Sam Smith",
+      "datePosted": "April 10, 2024",
+      "title": "Yoga for Beginners",
+      "content": "I'm interested in starting yoga to help with flexibility and stress. Does anyone have recommendations for a beginner like me?",
+      "views": 20,
+      "likes": 10,
+      "comments": 5
+    },
+    {
+      "author": "Maria Gonzalez",
+      "datePosted": "April 12, 2024",
+      "title": "Eating Healthy on a Budget",
+      "content": "It seems like eating healthy is more expensive than I can afford. Does anyone have tips for eating well without breaking the bank?",
+      "views": 25,
+      "likes": 15,
+      "comments": 9
+    },
+    {
+      "author": "Luke Skywalker",
+      "datePosted": "April 15, 2024",
+      "title": "Overcoming Procrastination",
+      "content": "Procrastination has been a huge hurdle in achieving my goals. Anyone else struggle with this and found effective ways to combat it?",
+      "views": 30,
+      "likes": 20,
+      "comments": 10
+    }
+  ]
+}

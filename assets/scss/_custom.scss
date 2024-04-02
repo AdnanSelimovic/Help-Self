@@ -222,3 +222,95 @@ body {
 
 
 
+// Forum Post Styles
+.forum-post {
+  background: $white-color;
+  border: 1px solid $background-light;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  .post-meta {
+    font-size: 0.9rem;
+    color: $gray-color;
+
+    strong {
+      color: $primary-color;
+    }
+
+    em {
+      font-style: italic;
+    }
+  }
+
+  .post-title {
+    h5 {
+      color: $primary-color;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .post-content {
+    p {
+      margin-bottom: 1rem;
+      color: darken($gray-color, 10%);
+    }
+  }
+
+  .post-footer {
+    font-size: 0.8rem;
+    color: $gray-color;
+    display: flex;
+    justify-content: space-between;
+
+    #commentsCount, #viewsCount, #likesCount {
+      // background-color: $background-light;
+      // padding: 0.25rem 0.5rem;
+      border-radius: 15px;
+    }
+  }
+}
+
+// Adjustments for specific elements in the forum
+.forum-posts-container {
+  margin-top: 2rem;
+}
+
+// Search and sorting options
+#searchPosts {
+  border: 1px solid $primary-color;
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+}
+
+// Sorting options styles
+input[type="radio"].form-check-input {
+  &:checked + label {
+    color: $accent-color;
+    font-weight: bold;
+  }
+}
+
+label.form-check-label {
+  cursor: pointer;
+  user-select: none;
+}
+
+// Pagination styles
+.pagination {
+  .page-link {
+    color: $primary-color;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .page-item.active .page-link {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+

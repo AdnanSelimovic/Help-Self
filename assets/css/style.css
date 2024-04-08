@@ -332,4 +332,75 @@ body {
 .habit-card {
   margin-bottom: 1rem;
   position: relative;
+}
+
+.forum-post {
+  background: #FFF;
+  border: 1px solid #EBEDF2;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+.forum-post .post-meta {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+.forum-post .post-meta strong {
+  color: #0088FF;
+}
+.forum-post .post-meta em {
+  font-style: italic;
+}
+.forum-post .post-title h5 {
+  color: #0088FF;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.forum-post .post-content p {
+  margin-bottom: 1rem;
+  color: #545b62;
+}
+.forum-post .post-footer {
+  font-size: 0.8rem;
+  color: #6c757d;
+  display: flex;
+  justify-content: space-between;
+}
+.forum-post .post-footer #commentsCount, .forum-post .post-footer #viewsCount, .forum-post .post-footer #likesCount {
+  border-radius: 15px;
+}
+
+.forum-posts-container {
+  margin-top: 2rem;
+}
+
+#searchPosts {
+  border: 1px solid #0088FF;
+}
+#searchPosts:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 136, 255, 0.25);
+}
+
+input[type=radio].form-check-input:checked + label {
+  color: #FF8800;
+  font-weight: bold;
+}
+
+label.form-check-label {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.pagination .page-link {
+  color: #0088FF;
+}
+.pagination .page-link:hover {
+  color: #FF8800;
+}
+.pagination .page-item.active .page-link {
+  background-color: #0088FF;
+  border-color: #0088FF;
 }/*# sourceMappingURL=style.css.map */

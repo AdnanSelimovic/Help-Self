@@ -10,7 +10,7 @@
     <link
       rel="icon"
       type="image/svg"
-      href="/Help-Self/assets/images/favicon.svg"
+      href="/Help-Self/frontend/assets/images/favicon.svg"
     />
 
     <link
@@ -20,16 +20,22 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="/Help-Self/assets/css/style.css" />
+    <link rel="stylesheet" href="frontend/assets/css/style.css" />
+    <link href="frontend/assets/css/spinkit.css" rel="stylesheet" />
+    <link href="frontend/assets/css/spapp.css" rel="stylesheet" />
+    <link href="frontend/assets/css/toastr.min.css" rel="stylesheet" />
+    <link href="frontend/assets/css/dataTables-latest.css" rel="stylesheet" />
+    <script src="frontend/assets/js/fontawesome.js"></script>
 
-    <script src="assets\js\jquery.min.js"></script>
-    <script src="assets\js\jquery.spapp.min.js"></script>
+    <!-- <script src="assets\js\jquery.min.js"></script>
+    <script src="assets\js\jquery.spapp.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
     
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/spapp.js"></script>
-    <script src="./assets/js/ajax.js"></script>
+    <!-- <script src="./assets/js/script.js"></script> -->
+    <!-- <script src="./assets/js/spapp.js"></script> -->
+    <!-- <script src="./assets/js/ajax.js"></script> -->
   </head>
 
   <body>
@@ -54,7 +60,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/Help-Self/">
-                    <img src="/Help-Self/assets/images/logo.svg" alt="HelpSelf Logo" height="30">
+                    <img src="frontend/assets/images/logo.svg" alt="HelpSelf Logo" height="30">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,17 +100,17 @@
     </header>
 
       <main id="spapp" role="main">
-        <section id="landing"></section>
-        <section id="test"></section>
-        <section id="registration"></section>
-        <section id="login"></section>
-        <section id="info"></section>
-        <section id="home"></section>
-        <section id="habits"></section>
-        <section id="forum"></section>
-        <section id="profile"></section>
-        <section id="settings"></section>
-        <section id="edit"></section>
+        <section id="landing" data-load="landing.html"></section>
+        <section id="test" data-load="test.html"></section>
+        <section id="registration" data-load="registration.html"></section>
+        <section id="login" data-load="login.html"></section>
+        <section id="info" data-load="info.html"></section>
+        <section id="home" data-load="home.html"></section>
+        <section id="habits" data-load="habits.html"></section>
+        <section id="forum" data-load="forum.html"></section>
+        <section id="profile" data-load="profile.html"></section>
+        <section id="settings" data-load="settings.html"></section>
+        <section id="edit" data-load="edit.html"></section>
       </main>
 
     <!-- //footer -->
@@ -114,7 +120,7 @@
           <div class="col-lg-4 mb-3 mb-lg-0">
             <a class="navbar-brand" href="/Help-Self/">
               <img
-                src="/Help-Self/assets/images/logo2.svg"
+                src="frontend\assets\images\logo2.svg"
                 alt="HelpSelf Logo"
                 height="20"
               />
@@ -156,5 +162,29 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="frontend/assets/js/jquery-3.7.1-latest.js"></script>
+    <script src="frontend/assets/js/jquery.spapp.min.js"></script>
+    <script src="frontend/assets/js/jquery.validate.min.js"></script>
+    <script src="frontend/assets/js/additional-methods.min.js"></script>
+    <script src="frontend/assets/js/block-ui.js"></script>
+    <script src="frontend/assets/js/scripts.js"></script>
+    <script src="frontend/assets/js/toastr.min.js"></script>
+
+    <script src="frontend/assets/js/dataTables-latest.js"></script>
+
+    <script src="frontend/utils/constants.js"></script>
+    <script src="frontend/utils/utils.js"></script>
+    <script src="frontend/js/form-validate.js"></script>
+    <script src="frontend/utils/rest_client.js"></script>
+
+    <script src="frontend/services/UserService.js"></script>
+    <script src="frontend/services/HabitService.js"></script>
+
+    
+
+    <script>
+      Utils.init_spapp();
+    </script>
+    
   </body>
 </html>

@@ -1,0 +1,107 @@
+<main class="container mt-5">
+  <h2 class="text-center mb-4">Habits</h2>
+
+  <div class="row">
+    <div class="col-12 text-center mb-4">
+      <button
+        type="button"
+        class="btn btn-accent w-100"
+        data-bs-toggle="modal"
+        data-bs-target="#createHabitModal"
+      >
+        Create Habit
+      </button>
+    </div>
+  </div>
+  <div id="habitCardsContainer" class="row">
+    <!-- Habit cards will be appended here -->
+  </div>
+
+  <div
+    class="modal fade"
+    id="createHabitModal"
+    tabindex="-1"
+    aria-labelledby="createHabitModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createHabitModalLabel">
+            Create New Habit
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form id="createHabitForm">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="unit" class="form-label">Unit</label>
+              <input
+                type="text"
+                class="form-control"
+                id="unit"
+                name="unit"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="verb" class="form-label">Verb</label>
+              <input
+                type="text"
+                class="form-control"
+                id="verb"
+                name="verb"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="increment" class="form-label">Increment</label>
+              <input
+                type="number"
+                class="form-control"
+                id="increment"
+                name="increment"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="milestone" class="form-label">Milestone</label>
+              <input
+                type="number"
+                class="form-control"
+                id="milestone"
+                name="milestone"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-accent">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

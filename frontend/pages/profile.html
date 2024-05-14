@@ -17,7 +17,14 @@
             <div
               class="col-md-3 align-items-center justify-content-center d-flex"
             >
-              <button class="btn btn-accent">Edit Profile</button>
+              <button
+                id="editProfileButton"
+                class="btn btn-accent"
+                data-toggle="modal"
+                data-target="#editProfileModal"
+              >
+                Edit Profile
+              </button>
             </div>
           </div>
         </div>
@@ -29,19 +36,15 @@
         <div class="col-md-6 mb-4">
           <div class="card shadow-sm">
             <div class="card-header">Profile Details</div>
-            <h4 class="card-title"></h4>
-            <p class="text-muted"></p>
-            <p></p>
-
             <ul class="list-group list-group-flush">
               <li class="list-group-item" id="profile-email">
-                <strong>Email:</strong>
+                <strong>Email:</strong> email@example.com
               </li>
               <li class="list-group-item" id="profile-joined">
-                <strong>Joined:</strong>
+                <strong>Joined:</strong> January 2020
               </li>
               <li class="list-group-item" id="profile-location">
-                <strong>Location:</strong>
+                <strong>Location:</strong> New York, USA
               </li>
             </ul>
           </div>
@@ -49,11 +52,11 @@
 
         <div class="col-md-6 mb-4">
           <div class="card shadow-sm">
-            <div class="card-header">Recent Activity</div>
+            <div class="card-header">Highest rated habits</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">No recent activity yet</li>
-              <li class="list-group-item">No recent activity yet</li>
-              <li class="list-group-item">No recent activity yet</li>
+              <li class="list-group-item">Running</li>
+              <li class="list-group-item">Walking</li>
+              <li class="list-group-item">Piano Practice</li>
             </ul>
           </div>
         </div>
@@ -61,3 +64,55 @@
     </div>
   </div>
 </main>
+
+<!-- Modal for editing profile -->
+<div
+  class="modal fade"
+  id="editProfileModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editProfileModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="editProfileForm">
+          <div class="form-group mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" required />
+          </div>
+          <div class="form-group mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" required />
+          </div>
+          <div class="form-group mb-3">
+            <label for="biography" class="form-label">Biography</label>
+            <textarea class="form-control" id="biography" rows="3"></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="location" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary" form="editProfileForm">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,6 +25,7 @@ const Utils = {
       onReady: function () {
         HabitService.getHabitsForUser();
         HabitService.createHabit();
+        HabitService.setupEventHandlers();
       },
     });
 
@@ -33,6 +34,25 @@ const Utils = {
       onReady: function () {
         HabitService.updateHabitDashboard(); 
         HabitService.updateRatingsDashboard();
+        HabitService.setupEventHandlers();
+      },
+    });
+
+    app.route({
+      view: 'forum',
+      onReady: function() {
+        ForumPostService.setupForumEventHandlers();
+        ForumPostService.getForumPosts();
+      },
+    });
+
+    app.route({
+      view: 'profile',
+      onReady: function() {
+        // ProfileService.loadUserProfile();
+        // ProfileService.setupProfileEventHandlers();
+        HabitService.loadUserProfile();
+        HabitService.setupProfileEventHandlers();
       },
     });
     app.run();

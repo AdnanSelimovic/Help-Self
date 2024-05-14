@@ -50,5 +50,13 @@ class RatingDao extends BaseDao
             ['user_id' => $user_id]
         );
     }
+    public function get_all_ratings_for_user($user_id) {
+        return $this->query(
+            "SELECT r.value FROM {$this->table} r
+             JOIN habits h ON r.habit_id = h.id
+             WHERE h.user_id = :user_id",
+            ['user_id' => $user_id]
+        );
+    }
 }
 ?>

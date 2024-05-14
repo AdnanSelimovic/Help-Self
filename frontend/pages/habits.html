@@ -104,4 +104,80 @@
       </div>
     </div>
   </div>
+
+  <div
+    class="modal fade"
+    id="updateHabitModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="updateHabitModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateHabitModalLabel">Update Habit</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form id="updateHabitForm">
+            <div class="mb-3">
+              <label for="updateDescription" class="form-label"
+                >Description</label
+              >
+              <textarea
+                class="form-control"
+                id="updateDescription"
+                name="description"
+                required
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="updateMilestone" class="form-label">Milestone</label>
+              <input
+                type="number"
+                class="form-control"
+                id="updateMilestone"
+                name="milestone"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="updateIncrement" class="form-label">Increment</label>
+              <input
+                type="number"
+                class="form-control"
+                id="updateIncrement"
+                name="increment"
+                required
+              />
+            </div>
+            <input type="hidden" id="updateHabitId" name="habitId" />
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onclick="HabitService.updateHabitDetails()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

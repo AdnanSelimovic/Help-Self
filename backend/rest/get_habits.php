@@ -1,8 +1,8 @@
 <?php
 require_once 'services/HabitService.class.php';
 
-// Statically setting the user ID for now
-$userId = 10; // You can change this as needed for testing different users
+
+$userId = 10; 
 
 $habitService = new HabitService();
 $habits = $habitService->get_habits_by_user_id($userId);

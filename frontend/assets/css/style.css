@@ -403,4 +403,22 @@ label.form-check-label {
 .pagination .page-item.active .page-link {
   background-color: #0088FF;
   border-color: #0088FF;
+}
+
+.star-rating .fa {
+  font-size: 24px;
+  color: #ddd;
+}
+
+.star-rating .fa:hover,
+.star-rating .fa:focus {
+  color: gold;
+}
+
+.star-rating input[type=radio] {
+  display: none;
+}
+
+.star-rating input[type=radio]:checked ~ .fa {
+  color: gold;
 }/*# sourceMappingURL=style.css.map */

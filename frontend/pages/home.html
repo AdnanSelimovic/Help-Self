@@ -53,4 +53,54 @@
   <div id="habitsOverview" class="row"></div>
     <!-- Place the habit cards here -->
   </div>
+
+  <!-- Rating Modal -->
+<!-- Rating Modal with Slider Input -->
+<div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ratingModalLabel">Rate Habit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>How do you rate this habit from 1 to 5?</p>
+        <input type="range" class="form-range" min="1" max="5" value="3" id="habitRatingSlider" onchange="HabitService.updateSliderValueDisplay(this.value);">
+        <!-- <span id="sliderValueDisplay">3</span> / 5 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="HabitService.submitRating()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Share Habit Modal -->
+<div class="modal fade" id="shareHabitModal" tabindex="-1" aria-labelledby="shareHabitModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shareHabitModalLabel">Share Your Habit Experience</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="shareHabitForm">
+          <div class="mb-3">
+            <label for="habitPostTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="habitPostTitle" name="title" required />
+          </div>
+          <div class="mb-3">
+            <label for="habitPostContent" class="form-label">Content</label>
+            <textarea class="form-control" id="habitPostContent" name="content" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-accent">Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>

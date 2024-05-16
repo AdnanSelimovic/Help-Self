@@ -49,9 +49,69 @@ class HabitDao extends BaseDao {
     }
 
     
+    // public function delete_habit_by_id($habit_id) {
+    //     $this->execute("DELETE FROM habits WHERE id = :id", ["id" => $habit_id]);
+    // }
+
     public function delete_habit_by_id($habit_id) {
-        $this->execute("DELETE FROM habits WHERE id = :id", ["id" => $habit_id]);
+        $stmt = $this->execute("DELETE FROM habits WHERE id = :id", ["id" => $habit_id]);
+        return $stmt->rowCount() > 0;
     }
+    
+
+    public function update_habit_progress($habit_id, $currentMilestone, $totalProgress) {
+        $query = "UPDATE {$this->table} 
+                  SET currentMilestone = :currentMilestone, 
+                      totalProgress = :totalProgress 
+                  WHERE id = :habit_id";
+        $bindings = [
+            'currentMilestone' => $currentMilestone,
+            'totalProgress' => $totalProgress,
+            'habit_id' => $habit_id
+        ];
+        return $this->execute($query, $bindings);
+    }
+
+    // public function update_habit_details($id, $description, $currentMilestone, $increment) {
+    //     $query = "UPDATE {$this->table} 
+    //               SET description = :description, 
+    //                   currentMilestone = :currentMilestone, 
+    //                   increment = :increment 
+    //               WHERE id = :id";
+    //     $bindings = [
+    //         'description' => $description,
+    //         'currentMilestone' => $currentMilestone,
+    //         'increment' => $increment,
+    //         'id' => $id
+    //     ];
+    //     return $this->execute($query, $bindings);
+    // }
+
+    public function update_habit_details($id, $description, $milestone, $increment) {
+        $query = "UPDATE {$this->table} 
+                  SET description = :description, 
+                      milestone = :milestone,  
+                      increment = :increment 
+                  WHERE id = :id";
+        $bindings = [
+            'description' => $description,
+            'milestone' => $milestone,
+            'increment' => $increment,
+            'id' => $id
+        ];
+        return $this->execute($query, $bindings);
+    }
+    
+
+    public function incrementMilestonesReached($habit_id) {
+        $query = "UPDATE {$this->table}
+                  SET milestonesReached = milestonesReached + 1
+                  WHERE id = :habit_id";
+        $bindings = ['habit_id' => $habit_id];
+        return $this->execute($query, $bindings);
+    }
+    
+    
     
 }
 ?>

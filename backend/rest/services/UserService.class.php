@@ -43,6 +43,9 @@ class UserService {
         return $password === $user['password'];
     }
     
+    public function update_user($user_id, $user) {
+        return $this->user_dao->update_user_by_id($user_id, $user);
+    }
 
    
     public function get_users($offset, $limit, $search, $order_column, $order_direction) {

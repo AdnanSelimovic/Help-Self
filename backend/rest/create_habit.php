@@ -3,7 +3,7 @@ require_once 'services/HabitService.class.php';
 
 $habitService = new HabitService();
 
-$user_id = 10; // You can change this as needed for testing different users
+$user_id = 10; 
 
 $title = $_POST['title'];
 $description = $_POST['description'];

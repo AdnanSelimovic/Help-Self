@@ -66,5 +66,22 @@ class UserDao extends BaseDao
     {
         $this->execute("DELETE FROM users WHERE id = :id", ["id" => $user_id]);
     }
+
+    public function update_user_by_id($user_id, $user) {
+        $query = "UPDATE users SET
+                  first_name = :first_name,
+                  last_name = :last_name,
+                  biography = :biography,
+                  location = :location
+                  WHERE id = :id";
+        $params = [
+            ':first_name' => $user['first_name'],
+            ':last_name' => $user['last_name'],
+            ':biography' => $user['biography'],
+            ':location' => $user['location'],
+            ':id' => $user_id
+        ];
+        return $this->execute($query, $params);
+    }
 }
 ?>

@@ -31,6 +31,18 @@ class ForumPostDao extends BaseDao {
         ]);
     }
 
+    public function get_forum_posts_sorted($order_column = 'date_posted', $order_direction = 'ASC') {
+        $order_column = filter_var($order_column, FILTER_SANITIZE_STRING);
+        $order_direction = strtoupper($order_direction) === 'ASC' ? 'ASC' : 'DESC';
+
+        $query = "SELECT * FROM {$this->table} ORDER BY :order_column :order_direction;";
+        $params = [
+            ':order_column' => $order_column,
+            ':order_direction' => $order_direction
+        ];
+
+        return $this->query($query, $params);
+    }
     
     public function get_forum_post_by_id($post_id) {
         return $this->get_by_id($post_id);

@@ -1,4 +1,7 @@
 <?php
+
+namespace HelpSelf;
+
 require_once __DIR__ . '/BaseDao.class.php';
 
 class ForumPostDao extends BaseDao {
@@ -25,23 +28,18 @@ class ForumPostDao extends BaseDao {
         return $this->query($query, [
             'search' => strtolower($search),
             'offset' => $offset,
-            'limit' => $limit,
-            'order_column' => $order_column,
-            'order_direction' => $order_direction
+            'limit' => $limit
         ]);
     }
 
     public function get_forum_posts_sorted($order_column = 'date_posted', $order_direction = 'ASC') {
-        $order_column = filter_var($order_column, FILTER_SANITIZE_STRING);
+        // Sanitize input parameters
+        $order_column = filter_var($order_column, FILTER_SANITIZE_SPECIAL_CHARS);
         $order_direction = strtoupper($order_direction) === 'ASC' ? 'ASC' : 'DESC';
 
-        $query = "SELECT * FROM {$this->table} ORDER BY :order_column :order_direction;";
-        $params = [
-            ':order_column' => $order_column,
-            ':order_direction' => $order_direction
-        ];
-
-        return $this->query($query, $params);
+        // Construct the SQL query directly with sanitized parameters
+        $query = "SELECT * FROM {$this->table} ORDER BY {$order_column} {$order_direction}";
+        return $this->query($query, []);
     }
     
     public function get_forum_post_by_id($post_id) {

@@ -1,51 +1,150 @@
-<main class="container mt-5">
-    <h2 class="text-center mb-4">Account Settings</h2>
+<div class="container mt-5">
+  <h2>Account Settings</h2>
+  <hr />
 
-    <section class="settings-section mb-5">
-        <h3>Password Change</h3>
-        <form action="/change-password" method="POST">
-            <div class="mb-3">
-                <label for="currentPassword" class="form-label">Current Password</label>
-                <input type="password" class="form-control" id="currentPassword" required>
-            </div>
-            <div class="mb-3">
-                <label for="newPassword" class="form-label">New Password</label>
-                <input type="password" class="form-control" id="newPassword" required>
-            </div>
-            <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                <input type="password" class="form-control" id="confirmPassword" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Change Password</button>
-        </form>
-    </section>
+  <!-- Change Password Section -->
+  <div class="card mb-4">
+    <div class="card-header">Change Password</div>
+    <div class="card-body">
+      <form id="changePasswordForm">
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="newPassword"
+            name="newPassword"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >Confirm New Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          id="changePasswordButton"
+          class="btn btn-primary w-100"
+        >
+          Update Password
+        </button>
+      </form>
+    </div>
+  </div>
 
-    <section class="settings-section mb-5">
-        <h3>Two-Factor Authentication (2FA)</h3>
-        <form action="/setup-2fa" method="POST">
-            <p>Enhance your account security by enabling 2FA.</p>
-            <button type="submit" class="btn btn-secondary">Enable 2FA</button>
-        </form>
-    </section>
+  <!-- Two-Factor Authentication Section -->
+  <div class="card mb-4">
+    <div class="card-header">Two-Factor Authentication</div>
+    <div class="card-body">
+      <p>
+        Two-factor authentication adds an additional layer of security to your
+        account by requiring more than just a password to sign in.
+      </p>
+      <form id="2faForm">
+        <div class="mb-3">
+          <label for="preferred_2fa_method" class="form-label"
+            >Preferred 2FA Method</label
+          >
+          <select
+            class="form-select"
+            id="preferred_2fa_method"
+            name="preferred_2fa_method"
+            required
+          >
+            <option value="authenticator_app">Authenticator App</option>
+            <option value="sms">SMS/Text Message</option>
+            <option value="email">Email-Based Verification</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">
+          Set Preferred Method
+        </button>
+      </form>
+    </div>
+  </div>
 
-    <section class="settings-section">
-        <h3>Other Settings</h3>
-        <form>
-            <div class="mb-3">
-                <label for="emailNotifications" class="form-label">Email Notifications</label>
-                <select class="form-select" id="emailNotifications">
-                    <option value="enabled">Enabled</option>
-                    <option value="disabled">Disabled</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="profileVisibility" class="form-label">Profile Visibility</label>
-                <select class="form-select" id="profileVisibility">
-                    <option value="public">Public</option>
-                    <option value="private">Private</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Settings</button>
-        </form>
-    </section>
-</main>
+  <!-- Two-Factor Methods Section -->
+  <div class="card mb-4">
+    <div class="card-header">Two-Factor Methods</div>
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h5>SMS/Text Message</h5>
+          <p>
+            You will receive one-time codes at your configured phone number.
+          </p>
+        </div>
+        <button type="button" class="btn btn-secondary">Configure</button>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h5>Authenticator App</h5>
+          <p>
+            Use an authentication app or browser extension to generate one-time
+            codes.
+          </p>
+        </div>
+        <button type="button" class="btn btn-secondary">Configure</button>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h5>Email-Based Verification</h5>
+          <p>Receive one-time codes via your registered email address.</p>
+        </div>
+        <button type="button" class="btn btn-secondary">Configure</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Get the current user
+      var currentUser = UserService.getCurrentUser();
+      if (!currentUser) {
+        toastr.error("User not logged in");
+        return;
+      }
+
+      // Handle change password form submission
+      $("#changePasswordForm").on("submit", function (event) {
+        event.preventDefault();
+
+        var newPassword = $("#newPassword").val();
+        var confirmPassword = $("#confirmPassword").val();
+
+        if (newPassword !== confirmPassword) {
+          toastr.error("New passwords do not match");
+          return;
+        }
+
+        $.ajax({
+          url: Constants.API_BASE_URL + "change_password",
+          type: "POST",
+          contentType: "application/json",
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          data: JSON.stringify({
+            user_id: currentUser.id,
+            new_password: newPassword,
+          }),
+          success: function (response) {
+            toastr.success("Password successfully changed");
+            $("#changePasswordForm")[0].reset();
+          },
+          error: function (jqXHR) {
+            toastr.error("Failed to change password: " + jqXHR.responseText);
+          },
+        });
+      });
+    });
+  </script>
+</div>

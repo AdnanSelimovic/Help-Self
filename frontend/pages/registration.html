@@ -1,57 +1,131 @@
 <main class="container mt-5">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <h2 class="text-center mb-4">Create Account</h2>
-      <form id="registrationForm">
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            name="username"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email address</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="confirm_password" class="form-label"
-            >Confirm Password</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="confirm_password"
-            name="confirm_password"
-            required
-          />
-        </div>
-        <button type="submit" id="registerButton" class="btn btn-accent w-100">Register</button>
-      </form>
-      <div class="mt-3">
-        <p class="text-center">
-          Already have an account? <a href="#login">Login here</a>.
-        </p>
+      <div class="col-md-6 offset-md-3">
+          <h2 class="text-center mb-4">Create Account</h2>
+          <form id="registrationForm">
+              <div class="mb-3">
+                  <label for="full_name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="full_name" name="full_name" required>
+              </div>
+              <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                  <label for="phone_number" class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+              </div>
+              <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="mb-3">
+                  <label for="confirm_password" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+              </div>
+              <button type="submit" id="registerButton" class="btn btn-accent w-100">Register</button>
+          </form>
+          <div class="mt-3">
+              <p class="text-center">Already have an account? <a href="#login">Login here</a>.</p>
+          </div>
       </div>
-    </div>
   </div>
+  <input type="hidden" id="hiddenRecoveryCodes">
+  <input type="hidden" id="hiddenUserId">
 </main>
+
+<div class="modal fade" id="recoveryCodesModal" tabindex="-1" aria-labelledby="recoveryCodesModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="recoveryCodesModalLabel">Recovery Codes</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <ul id="recoveryCodesList" class="list-group"></ul>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="confirmRecoveryCodesButton">I have noted the codes</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+      $("#registrationForm").on("submit", function (event) {
+          event.preventDefault();
+
+          var formData = {
+              full_name: $("#full_name").val(),
+              username: $("#username").val(),
+              email: $("#email").val(),
+              phone_number: $("#phone_number").val(),
+              password: $("#password").val(),
+              // confirm_password: $("#confirm_password").val()
+          };
+
+          $.ajax({
+              url: Constants.API_BASE_URL + "register",
+              type: "POST",
+              contentType: "application/json",
+              data: JSON.stringify(formData),
+              success: function (response) {
+                  if (response.error === "false") {
+                      var recoveryCodesList = $("#recoveryCodesList");
+                      recoveryCodesList.empty();
+                      response.recovery_codes.forEach(function (code) {
+                          recoveryCodesList.append("<li class='list-group-item'>" + code + "</li>");
+                      });
+                      $("#recoveryCodesModal").modal("show");
+                      // Store recovery codes in hidden field
+                      $("#hiddenRecoveryCodes").val(JSON.stringify(response.recovery_codes));
+                      // Save user_id in hidden field
+                      $("#hiddenUserId").val(response.user_id);
+                  } else {
+                      toastr.error("Failed to register user: " + response.message);
+                  }
+              },
+              error: function (jqXHR) {
+                  toastr.error("Failed to register user: " + jqXHR.responseText);
+              }
+          });
+      });
+
+      $("#confirmRecoveryCodesButton").on("click", function () {
+          var user_id = $("#hiddenUserId").val();
+          var recovery_codes = $("#hiddenRecoveryCodes").val();
+          
+          // Debugging output
+          console.log("User ID:", user_id);
+          console.log("Recovery Codes:", recovery_codes);
+          
+          if (user_id && recovery_codes) {
+              $.ajax({
+                  url: Constants.API_BASE_URL + "store_recovery_codes",
+                  type: "POST",
+                  contentType: "application/json",
+                  data: JSON.stringify({
+                      user_id: user_id,
+                      recovery_codes: JSON.parse(recovery_codes)
+                  }),
+                  success: function () {
+                      toastr.success("Recovery codes stored successfully");
+                      window.location.href = "#login";
+                      $("#registrationForm")[0].reset();
+                      toastr.success("Registration successful! Please login.");
+                  },
+                  error: function (jqXHR) {
+                      toastr.error("Failed to store recovery codes: " + jqXHR.responseText);
+                  }
+              });
+          } else {
+              toastr.error("User ID or Recovery Codes are missing.");
+          }
+      });
+  });
+</script>

@@ -1,4 +1,7 @@
 <?php
+
+namespace HelpSelf;
+
 require_once __DIR__ . '/BaseDao.class.php';
 
 /**

@@ -30,6 +30,8 @@
     <!-- <script src="assets\js\jquery.min.js"></script>
     <script src="assets\js\jquery.spapp.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     
 
     
@@ -90,7 +92,8 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#profile">Profile</a></li>
                                 <li><a class="dropdown-item" href="#settings">Settings</a></li>
-                                <li><a class="dropdown-item" href="#landing">Log out</a></li>
+                                <!-- <li><a class="dropdown-item" href="#landing">Log out</a></li> -->
+                                <button class="dropdown-item" id="logoutButton">Log out</button>
                             </ul>
                         </li>
                     </ul>
@@ -111,6 +114,8 @@
         <section id="profile" data-load="profile.html"></section>
         <section id="settings" data-load="settings.html"></section>
         <section id="edit" data-load="edit.html"></section>
+        <section id="password_reset" data-load="password_reset.html"></section>
+        <section id="verify_email" data-load="verify_email.html"></section>
       </main>
 
     <!-- //footer -->
@@ -148,10 +153,10 @@
           <div class="col-lg-2 mb-3 mb-lg-0">
             <h5>Follow Us</h5>
             <ul class="list-unstyled">
-              <li><a href="https://www.facebook.com/HelpSelf">Facebook</a></li>
-              <li><a href="https://www.twitter.com/HelpSelf">Twitter</a></li>
+              <li><a href="">Facebook</a></li>
+              <li><a href="">Twitter</a></li>
               <li>
-                <a href="https://www.instagram.com/HelpSelf">Instagram</a>
+                <a href="">Instagram</a>
               </li>
             </ul>
           </div>

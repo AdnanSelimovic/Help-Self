@@ -1,4 +1,7 @@
 <?php
+
+namespace HelpSelf;
+
 require_once __DIR__ . '/../dao/RatingDao.class.php';
 
 /**
@@ -56,6 +59,11 @@ class RatingService
     {
         return $this->rating_dao->get_all_ratings_for_user($user_id);
     }
+
+    public function get_average_rating_for_user($user_id) {
+        return $this->rating_dao->get_average_rating_for_user($user_id);
+    }
+    
 
 }
 ?>

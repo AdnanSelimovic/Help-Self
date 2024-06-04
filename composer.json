@@ -1,5 +1,15 @@
 {
     "require": {
-        "mikecao/flight": "^3.5"
+        "mikecao/flight": "^3.5",
+        "zircote/swagger-php": "^4.9",
+        "firebase/php-jwt": "^6.10",
+        "doctrine/annotations": "^2.0",
+        "phpmailer/phpmailer": "^6.9",
+        "giggsey/libphonenumber-for-php": "^8.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "HelpSelf\\": "backend/rest/"
+        }
     }
 }

@@ -1,5 +1,10 @@
 <?php
+
+namespace HelpSelf;
+
 require_once __DIR__ . '/../dao/HabitDao.class.php';
+
+use Exception;
 
 /**
  * The HabitService class is responsible for handling all business logic related to habits.

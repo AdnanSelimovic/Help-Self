@@ -1,60 +1,157 @@
-// https://startbootstrap.com/template/sb-admin
 const Utils = {
   init_spapp: function () {
     var app = $.spapp({
-      templateDir: "/Help-Self/frontend/pages/",
-      defaultView: "landing",
+      templateDir: "frontend/pages/",
+      defaultView: "landing", // Ensure the default view is set to landing
     });
 
     app.route({
-      view: 'login',
+      view: "landing",
       onReady: function () {
-        UserService.login();
+        console.log("Landing page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        } else {
+          console.log("User is not logged in, staying on #landing.");
+          if (window.location.hash !== "#landing") {
+            window.location.href = "#landing";
+          }
+        }
       },
     });
 
     app.route({
-      view: 'registration',
+      view: "login",
       onReady: function () {
-        UserService.register();
+        console.log("Login page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        } else {
+          UserService.login();
+        }
       },
     });
 
     app.route({
-      view: 'habits',
+      view: "registration",
       onReady: function () {
-        HabitService.getHabitsForUser();
-        HabitService.createHabit();
-        HabitService.setupEventHandlers();
+        console.log("Registration page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        } else {
+          UserService.register();
+        }
       },
     });
 
     app.route({
-      view: 'home',
+      view: "habits",
       onReady: function () {
-        HabitService.updateHabitDashboard(); 
-        HabitService.updateRatingsDashboard();
-        HabitService.setupEventHandlers();
+        console.log("Habits page loaded.");
+        if (!UserService.isLoggedIn()) {
+          console.log("User is not logged in, redirecting to #login.");
+          window.location.href = "#login";
+        } else {
+          HabitService.getHabitsForUser();
+          HabitService.createHabit();
+          HabitService.setupEventHandlers();
+        }
       },
     });
 
     app.route({
-      view: 'forum',
-      onReady: function() {
-        ForumPostService.setupForumEventHandlers();
-        ForumPostService.getForumPosts();
+      view: "home",
+      onReady: function () {
+        console.log("Home page loaded.");
+        if (!UserService.isLoggedIn()) {
+          console.log("User is not logged in, redirecting to #login.");
+          window.location.href = "#login";
+        } else {
+          HabitService.updateHabitDashboard();
+          HabitService.updateRatingsDashboard();
+          HabitService.setupEventHandlers();
+          // ForumPostService.setupForumEventHandlers();
+        }
       },
     });
 
     app.route({
-      view: 'profile',
-      onReady: function() {
-        // ProfileService.loadUserProfile();
-        // ProfileService.setupProfileEventHandlers();
-        HabitService.loadUserProfile();
-        HabitService.setupProfileEventHandlers();
+      view: "forum",
+      onReady: function () {
+        console.log("Forum page loaded.");
+        if (!UserService.isLoggedIn()) {
+          console.log("User is not logged in, redirecting to #login.");
+          window.location.href = "#login";
+        } else {
+          HabitService.setupEventHandlers();
+          // ForumPostService.setupForumEventHandlers();
+          ForumPostService.getForumPosts();
+        }
       },
     });
+
+    app.route({
+      view: "info",
+      onReady: function () {
+        console.log("Info page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        }
+      },
+    });
+
+    app.route({
+      view: "password_reset",
+      onReady: function () {
+        console.log("Password Reset page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        }
+      },
+    });
+
+    app.route({
+      view: "verify_email",
+      onReady: function () {
+        console.log("Verify Email page loaded.");
+        if (UserService.isLoggedIn()) {
+          console.log("User is logged in, redirecting to #home.");
+          window.location.href = "#home";
+        }
+      },
+    });
+
+    app.route({
+      view: "settings",
+      onReady: function () {
+        console.log("Settings page loaded.");
+        if (!UserService.isLoggedIn()) {
+          console.log("User is not logged in, redirecting to #login.");
+          window.location.href = "#login";
+        } else {
+        }
+      },
+    });
+
+    app.route({
+      view: "profile",
+      onReady: function () {
+        console.log("Profile page loaded.");
+        if (!UserService.isLoggedIn()) {
+          console.log("User is not logged in, redirecting to #login.");
+          window.location.href = "#login";
+        } else {
+          HabitService.loadUserProfile();
+          HabitService.setupProfileEventHandlers();
+        }
+      },
+    });
+
     app.run();
     this.handleNavigationUpdates();
   },
@@ -62,9 +159,15 @@ const Utils = {
   handleNavigationUpdates: function () {
     $(window).on("hashchange", function () {
       var activeView = location.hash.replace("#", "");
+      console.log("Hash changed to: " + activeView);
       Utils.updateNavLinks(activeView);
     });
     var initialView = window.location.hash.replace("#", "") || "landing";
+    console.log("Initial view: " + initialView);
+    if (initialView === "") {
+      console.log("No initial hash, setting hash to #landing.");
+      window.location.href = "#landing"; // Ensure the hash is set to landing if no hash is present
+    }
     this.updateNavLinks(initialView);
   },
   updateNavLinks: function (activeView) {
@@ -90,7 +193,6 @@ const Utils = {
         .addClass("disabled")
         .attr("aria-disabled", "true");
     } else {
-    
       $(".navbar-nav .nav-link")
         .removeClass("disabled")
         .attr("aria-disabled", "false")
@@ -98,7 +200,6 @@ const Utils = {
         .removeClass("disabled");
       $('.navbar-nav .nav-link[href="#' + activeView + '"]').addClass("active");
 
-      
       $("#navbarDropdown")
         .removeClass("disabled")
         .attr("aria-disabled", "false")

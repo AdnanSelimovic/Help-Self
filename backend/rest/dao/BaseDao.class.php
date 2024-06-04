@@ -1,5 +1,12 @@
 <?php
-require_once dirname(__FILE__) . "/../../config.php";
+
+namespace HelpSelf;
+
+require_once dirname(__FILE__) . "/../../../config.php";
+
+use \PDO;
+use Exception;
+use PDOException;
 
 /**
  * The main class for interaction with database.
